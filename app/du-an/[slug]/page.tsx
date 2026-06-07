@@ -70,10 +70,7 @@ export default async function LessonPage({
                 {lesson.title}
               </h1>
               <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-white/85">{lesson.desc}</p>
-              <p className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/80">
-                <Clock className="h-4 w-4" aria-hidden="true" />
-                {lesson.duration}
-              </p>
+
             </div>
 
             <div className="hidden h-40 w-40 shrink-0 overflow-hidden rounded-2xl border-4 border-white/30 shadow-xl lg:block">
