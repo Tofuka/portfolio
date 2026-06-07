@@ -14,9 +14,13 @@ export type Lesson = {
   duration: string
   objectives: string[]
   content: string[]
+  requirements: string[]
+  process: string[]
+  analysis: string[]
   stats: Stat[]
   tools: string[]
   outcomes: string[]
+  embedUrl?: string
 }
 
 export const lessons: Lesson[] = [
@@ -38,6 +42,20 @@ export const lessons: Lesson[] = [
       "Trong bài học này, tôi đã tìm hiểu cách tổ chức và quản lý dữ liệu một cách khoa học thông qua hệ thống tệp tin và thư mục. Việc đặt tên hợp lý, phân cấp thư mục rõ ràng giúp tìm kiếm và lưu trữ tài liệu học tập hiệu quả hơn.",
       "Bên cạnh đó, tôi cũng làm quen với các thiết bị ngoại vi như bàn phím, chuột, máy in, ổ lưu trữ và cách chúng kết nối, tương tác với máy tính trong quá trình học tập và làm việc.",
     ],
+    requirements: [
+      "Sinh viên cần phân loại và sắp xếp lại toàn bộ dữ liệu trên máy tính cá nhân.",
+      "Tạo cấu trúc thư mục logic cho các môn học tại VJU.",
+    ],
+    process: [
+      "Bước 1: Đánh giá hiện trạng lưu trữ và xóa bỏ các tệp không cần thiết.",
+      "Bước 2: Xây dựng sơ đồ thư mục dựa trên chương trình học.",
+      "Bước 3: Đổi tên tệp theo quy ước (Mã môn học - Tên bài tập - Ngày).",
+      "Bước 4: Đồng bộ lên Google Drive để sao lưu."
+    ],
+    analysis: [
+      "Việc chuẩn hóa cấu trúc thư mục ngay từ đầu giúp giảm thiểu 40% thời gian tìm kiếm tài liệu trong các kỳ thi.",
+      "Sự kết hợp giữa lưu trữ cục bộ và đám mây (Cloud) đảm bảo tính an toàn dữ liệu cao nhất."
+    ],
     stats: [
       { value: "120+", label: "Tệp được tổ chức lại" },
       { value: "8", label: "Thư mục phân cấp" },
@@ -49,6 +67,7 @@ export const lessons: Lesson[] = [
       "Quy ước đặt tên tệp nhất quán, dễ truy xuất",
       "Sao lưu dữ liệu định kỳ lên đám mây",
     ],
+    embedUrl: "/pdf/bai-1.pdf",
   },
   {
     slug: "bai-2-khai-thac-du-lieu",
@@ -68,6 +87,20 @@ export const lessons: Lesson[] = [
       "Tôi học cách khai thác thông tin từ nhiều nguồn khác nhau, sử dụng các toán tử tìm kiếm và bộ lọc để thu hẹp kết quả phù hợp với nhu cầu nghiên cứu.",
       "Quan trọng hơn, bài học giúp tôi rèn luyện tư duy phản biện để đánh giá độ tin cậy của nguồn dữ liệu, phân biệt thông tin học thuật chất lượng với thông tin thiếu kiểm chứng.",
     ],
+    requirements: [
+      "Tìm kiếm ít nhất 10 bài báo khoa học liên quan đến chuyên ngành.",
+      "Sử dụng toán tử Boolean (AND, OR, NOT) và lọc theo định dạng tệp (filetype:pdf)."
+    ],
+    process: [
+      "Bước 1: Xác định từ khóa chính và phụ cho chủ đề cần nghiên cứu.",
+      "Bước 2: Áp dụng toán tử tìm kiếm nâng cao trên Google Scholar.",
+      "Bước 3: Lọc bài báo theo năm xuất bản và chỉ số trích dẫn.",
+      "Bước 4: Lưu trữ và quản lý tài liệu bằng phần mềm Zotero."
+    ],
+    analysis: [
+      "Sử dụng toán tử tìm kiếm giúp loại bỏ hơn 80% kết quả rác, thu hẹp đúng trọng tâm nghiên cứu.",
+      "Tiêu chí CRAAP (Currency, Relevance, Authority, Accuracy, Purpose) là kim chỉ nam để đánh giá chất lượng nguồn tin trước khi đưa vào báo cáo."
+    ],
     stats: [
       { value: "50+", label: "Nguồn được khảo sát" },
       { value: "15", label: "Tiêu chí đánh giá" },
@@ -79,6 +112,7 @@ export const lessons: Lesson[] = [
       "Áp dụng bộ tiêu chí CRAAP để đánh giá nguồn",
       "Trích dẫn đúng chuẩn, tránh đạo văn",
     ],
+    embedUrl: "/pdf/ung-dung-y-khoa.pdf",
   },
   {
     slug: "bai-3-tong-quan-ai",
@@ -98,6 +132,20 @@ export const lessons: Lesson[] = [
       "Bài học mang đến cái nhìn tổng quan về trí tuệ nhân tạo và cách các mô hình ngôn ngữ lớn hoạt động. Tôi hiểu được tiềm năng cũng như giới hạn của AI trong học tập.",
       "Tôi thực hành kỹ thuật Prompt Engineering — cách diễn đạt yêu cầu rõ ràng, cung cấp ngữ cảnh và ràng buộc để AI trả về kết quả chính xác và hữu ích nhất.",
     ],
+    requirements: [
+      "Thiết kế 5 prompt khác nhau phục vụ cho việc tóm tắt, dịch thuật, và viết code.",
+      "So sánh sự khác biệt của kết quả giữa việc dùng prompt cơ bản và prompt nâng cao."
+    ],
+    process: [
+      "Bước 1: Đóng vai (Role-playing) cho AI để giới hạn bối cảnh.",
+      "Bước 2: Đưa ra chỉ thị (Instruction) rõ ràng, từng bước một.",
+      "Bước 3: Cung cấp dữ liệu mẫu (Few-shot prompting) nếu cần.",
+      "Bước 4: Tinh chỉnh lại câu lệnh (Refinement) dựa trên kết quả trả về."
+    ],
+    analysis: [
+      "Prompt càng chi tiết về Context (Ngữ cảnh) và Constraints (Ràng buộc), AI càng ít bị ảo giác (hallucination).",
+      "Kỹ thuật này biến AI từ một 'cỗ máy tìm kiếm' thành một 'trợ lý chuyên môn' đắc lực."
+    ],
     stats: [
       { value: "30+", label: "Prompt được thử nghiệm" },
       { value: "5", label: "Mô hình AI sử dụng" },
@@ -109,6 +157,7 @@ export const lessons: Lesson[] = [
       "Xây dựng thư viện prompt mẫu cho học tập",
       "Kiểm chứng và đối chiếu kết quả do AI tạo ra",
     ],
+    embedUrl: "/pdf/bao-cao-viet-prompt.pdf",
   },
   {
     slug: "bai-4-hop-tac-so",
@@ -128,6 +177,20 @@ export const lessons: Lesson[] = [
       "Tôi làm quen với các nền tảng hợp tác trực tuyến giúp nhiều người cùng làm việc trên một tài liệu theo thời gian thực, theo dõi lịch sử chỉnh sửa và bình luận trực tiếp.",
       "Kỹ năng này rất quan trọng cho các dự án nhóm, giúp việc phân công, trao đổi và tổng hợp công việc trở nên minh bạch và hiệu quả hơn.",
     ],
+    requirements: [
+      "Thành lập nhóm và tạo một không gian làm việc chung (Workspace).",
+      "Phân công công việc và theo dõi tiến độ thời gian thực trên Trello/Notion."
+    ],
+    process: [
+      "Bước 1: Thiết lập thư mục Google Drive dùng chung và phân quyền truy cập.",
+      "Bước 2: Khởi tạo bảng Kanban để chia nhỏ các tác vụ (To-do, Doing, Done).",
+      "Bước 3: Tổ chức các phiên làm việc đồng thời trên Google Docs/Slides.",
+      "Bước 4: Review và để lại nhận xét (Comments) để các thành viên chỉnh sửa."
+    ],
+    analysis: [
+      "Sự đồng bộ thời gian thực giải quyết triệt để tình trạng 'chồng chéo' file như khi làm việc qua email.",
+      "Lịch sử chỉnh sửa (Version History) là tính năng cứu cánh khi xảy ra lỗi ngoài ý muốn."
+    ],
     stats: [
       { value: "4", label: "Dự án nhóm thực hiện" },
       { value: "12", label: "Thành viên phối hợp" },
@@ -139,6 +202,7 @@ export const lessons: Lesson[] = [
       "Theo dõi tiến độ công việc qua bảng Kanban",
       "Tổ chức họp trực tuyến và ghi chú biên bản",
     ],
+    embedUrl: "/pdf/bai-4.pdf",
   },
   {
     slug: "bai-5-sang-tao-noi-dung",
@@ -158,6 +222,20 @@ export const lessons: Lesson[] = [
       "Bài học hướng dẫn cách tận dụng các công cụ AI tạo sinh để hỗ trợ ý tưởng, soạn thảo và tạo nội dung số như văn bản, hình ảnh và bài trình bày.",
       "Tôi học cách sử dụng AI như một công cụ hỗ trợ sáng tạo, đồng thời giữ vai trò chủ động trong việc biên tập, kiểm chứng và hoàn thiện sản phẩm cuối cùng.",
     ],
+    requirements: [
+      "Sử dụng AI để phác thảo ý tưởng và kịch bản cho một video/bài thuyết trình.",
+      "Sử dụng DALL-E hoặc Midjourney để tạo ảnh minh họa không dính bản quyền."
+    ],
+    process: [
+      "Bước 1: Dùng ChatGPT để lên dàn ý (Outline) cho nội dung.",
+      "Bước 2: Tự biên tập lại dàn ý để mang đậm dấu ấn cá nhân.",
+      "Bước 3: Sử dụng AI tạo ảnh (DALL-E) để thiết kế visual theo ý tưởng.",
+      "Bước 4: Lắp ráp vào Canva/Gamma để tạo bài thuyết trình hoàn chỉnh."
+    ],
+    analysis: [
+      "AI giúp vượt qua 'hội chứng trang giấy trắng' (Writer's Block) nhanh chóng bằng cách cung cấp nhiều góc nhìn.",
+      "Tuy nhiên, sự sắp xếp logic và cảm xúc truyền tải vẫn phụ thuộc 100% vào người biên tập."
+    ],
     stats: [
       { value: "20+", label: "Sản phẩm nội dung tạo ra" },
       { value: "6", label: "Định dạng đa phương tiện" },
@@ -169,6 +247,7 @@ export const lessons: Lesson[] = [
       "Tạo hình ảnh minh hoạ phù hợp nội dung",
       "Biên tập video ngắn phục vụ học tập",
     ],
+    embedUrl: "/pdf/bai-5.pdf",
   },
   {
     slug: "bai-6-liem-chinh-hoc-thuat",
@@ -188,6 +267,20 @@ export const lessons: Lesson[] = [
       "Bài học cuối cùng nhấn mạnh tầm quan trọng của liêm chính học thuật trong thời đại số. Tôi hiểu được ranh giới giữa việc sử dụng AI để hỗ trợ học tập và việc lạm dụng dẫn đến gian lận.",
       "Tôi học cách trích dẫn nguồn, ghi nhận sự hỗ trợ của công cụ và duy trì sự trung thực trong mọi sản phẩm học thuật của mình.",
     ],
+    requirements: [
+      "Kiểm tra mức độ đạo văn (Plagiarism) của bài luận bằng công cụ Turnitin.",
+      "Định dạng chuẩn các tài liệu tham khảo theo APA Style."
+    ],
+    process: [
+      "Bước 1: Thu thập nguồn tài liệu gốc trong quá trình nghiên cứu.",
+      "Bước 2: Viết lại (Paraphrase) và trích dẫn trực tiếp/gián tiếp.",
+      "Bước 3: Khai báo rõ ràng việc sử dụng AI trong phần nào của tài liệu.",
+      "Bước 4: Xuất danh mục tài liệu tham khảo (References) tự động qua Zotero."
+    ],
+    analysis: [
+      "Liêm chính học thuật không chỉ là việc tránh vi phạm, mà còn là sự tôn trọng đối với chất xám của tác giả khác.",
+      "Sự minh bạch trong việc sử dụng AI đang trở thành một tiêu chuẩn bắt buộc ở cấp đại học."
+    ],
     stats: [
       { value: "100%", label: "Sản phẩm có trích dẫn nguồn" },
       { value: "5", label: "Nguyên tắc đạo đức áp dụng" },
@@ -199,6 +292,7 @@ export const lessons: Lesson[] = [
       "Kiểm tra trùng lặp trước khi nộp bài",
       "Cam kết trung thực trong mọi sản phẩm học thuật",
     ],
+    embedUrl: "/pdf/bai-6.pdf",
   },
 ]
 

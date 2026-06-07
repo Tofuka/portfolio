@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight, CheckCircle2, Clock, Target, Wrench, Sparkles } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle2, Clock, Target, Wrench, Sparkles, ClipboardList, Workflow, BarChart3, FileText, Download, ExternalLink } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { lessons, getLesson } from "@/lib/lessons"
@@ -86,19 +86,6 @@ export default async function LessonPage({
         </div>
       </header>
 
-      {/* Stats band */}
-      <section className="border-b border-border bg-card">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-border px-6 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {lesson.stats.map((stat) => (
-            <div key={stat.label} className="py-8 text-center sm:px-6">
-              <p className="font-heading text-4xl font-bold" style={{ color: lesson.accent }}>
-                {stat.value}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Content */}
       <section className="py-16 md:py-24">
@@ -117,6 +104,7 @@ export default async function LessonPage({
               ))}
             </div>
 
+            {/* Mục tiêu bài học */}
             <div className="mt-12 flex items-center gap-2">
               <Target className="h-5 w-5" style={{ color: lesson.accent }} aria-hidden="true" />
               <h2 className="font-heading text-2xl font-bold uppercase text-foreground">Mục tiêu bài học</h2>
@@ -129,6 +117,65 @@ export default async function LessonPage({
                 </li>
               ))}
             </ul>
+
+            {/* Tổng quan yêu cầu */}
+            {lesson.requirements && lesson.requirements.length > 0 && (
+              <>
+                <div className="mt-12 flex items-center gap-2">
+                  <ClipboardList className="h-5 w-5" style={{ color: lesson.accent }} aria-hidden="true" />
+                  <h2 className="font-heading text-2xl font-bold uppercase text-foreground">Tổng quan yêu cầu</h2>
+                </div>
+                <ul className="mt-5 space-y-3">
+                  {lesson.requirements.map((req, i) => (
+                    <li key={i} className="flex gap-3 text-foreground">
+                      <div className="mt-2 h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: lesson.accent }} aria-hidden="true" />
+                      <span className="leading-relaxed text-muted-foreground">{req}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {/* Quy trình thực hiện */}
+            {lesson.process && lesson.process.length > 0 && (
+              <>
+                <div className="mt-12 flex items-center gap-2">
+                  <Workflow className="h-5 w-5" style={{ color: lesson.accent }} aria-hidden="true" />
+                  <h2 className="font-heading text-2xl font-bold uppercase text-foreground">Quy trình thực hiện</h2>
+                </div>
+                <div className="mt-6 space-y-6 border-l-2 ml-2.5 pl-6" style={{ borderColor: `${lesson.accent}30` }}>
+                  {lesson.process.map((step, i) => (
+                    <div key={i} className="relative">
+                      <div className="absolute -left-[1.85rem] top-1.5 h-3 w-3 rounded-full border-2 border-background" style={{ backgroundColor: lesson.accent }}></div>
+                      <p className="text-lg leading-relaxed text-muted-foreground">
+                        <strong className="text-foreground font-semibold mr-1">{step.split(':')[0]}:</strong>
+                        {step.split(':').slice(1).join(':')}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Phân tích kết quả */}
+            {lesson.analysis && lesson.analysis.length > 0 && (
+              <>
+                <div className="mt-12 flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5" style={{ color: lesson.accent }} aria-hidden="true" />
+                  <h2 className="font-heading text-2xl font-bold uppercase text-foreground">Phân tích kết quả</h2>
+                </div>
+                <div className="mt-5 space-y-4">
+                  {lesson.analysis.map((para, i) => (
+                    <div key={i} className="p-6 rounded-2xl bg-muted/50 border border-border relative overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: lesson.accent }}></div>
+                      <p className="text-lg leading-relaxed text-muted-foreground italic">
+                        "{para}"
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Right: sidebar cards */}
@@ -172,6 +219,63 @@ export default async function LessonPage({
         </div>
       </section>
 
+      {/* Embedded Document Section */}
+      <section className="py-16 border-t border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex items-center gap-2 mb-8 justify-center">
+            <h2 className="font-heading text-3xl font-bold uppercase text-foreground text-center">Sản phẩm thực hành</h2>
+          </div>
+          
+          <div className="flex justify-center">
+            {lesson.embedUrl ? (
+              <div className="group relative flex w-full max-w-sm flex-col items-center overflow-hidden rounded-2xl border border-border bg-card shadow-lg transition-all hover:shadow-xl sm:max-w-xl sm:flex-row">
+                <div 
+                  className="flex h-32 w-full shrink-0 items-center justify-center bg-muted/50 sm:h-auto sm:w-32 sm:self-stretch"
+                  style={{ backgroundColor: `${lesson.accent}15` }}
+                >
+                  <FileText className="h-12 w-12" style={{ color: lesson.accent }} />
+                </div>
+                <div className="flex flex-1 flex-col p-6 text-center sm:text-left">
+                  <h3 className="font-heading text-xl font-bold text-foreground">Báo cáo dự án</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Nhấn để xem trực tuyến hoặc tải xuống tài liệu gốc của bài học này.</p>
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                    <Link
+                      href={lesson.embedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+                      style={{ backgroundColor: lesson.accent }}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Xem tài liệu
+                    </Link>
+                    <Link
+                      href={lesson.embedUrl}
+                      download
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5 hover:bg-muted"
+                    >
+                      <Download className="h-4 w-4" />
+                      Tải xuống
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-2xl border border-border bg-card shadow-xl overflow-hidden flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="inline-flex h-20 w-20 items-center justify-center rounded-full mb-6" style={{ backgroundColor: `${lesson.accent}15` }}>
+                    <Sparkles className="h-10 w-10" style={{ color: lesson.accent }} />
+                  </div>
+                  <h3 className="text-2xl font-bold font-heading mb-2">Tài liệu đang cập nhật</h3>
+                  <p className="text-muted-foreground max-w-md mx-auto">
+                    Sản phẩm nhúng của dự án này đang được liên kết và sẽ hiển thị tại đây.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
       {/* Prev / Next nav */}
       <nav className="border-t border-border" aria-label="Điều hướng giữa các bài học">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-stretch sm:justify-between">
